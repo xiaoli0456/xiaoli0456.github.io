@@ -28,12 +28,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install -g pnpm
-          rm -f pnpm-lock.yaml
-          pnpm install --shamefully-hoist
-
-      - name: Generate static site
-        run: pnpm generate
+          npm install
+          npm run generate
 
       - name: Upload to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
