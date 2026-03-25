@@ -283,7 +283,7 @@ onUnmounted(() => {
 <style scoped>
 .carousel-wrapper {
   width: 100%;
-  height: 100%;
+  height: auto;
   position: relative;
   overflow: hidden;
   cursor: grab;
@@ -297,7 +297,7 @@ onUnmounted(() => {
 .carousel-track {
   display: flex;
   width: 100%;
-  height: 100%;
+  height: auto;
   /* No default transition here, handled by class */
 }
 
@@ -307,7 +307,7 @@ onUnmounted(() => {
 
 .carousel-slide {
   width: 100%;
-  height: 100%;
+  height: auto;
   flex-shrink: 0;
   display: flex;
   align-items: center;

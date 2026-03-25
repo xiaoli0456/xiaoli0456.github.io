@@ -3,7 +3,7 @@
 
 <template>
   <div>
-    <HeroBanner />
+    <!-- <HeroBanner /> -->
     <MainContent />
   </div>
 </template>

@@ -3,17 +3,24 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   srcDir: 'src/',
-  css: ['~/style.css'],
+  css: ['~/assets/styles/main.css'],
+
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+  ],
   
   // 开启 SSR 以支持 SEO (静态生成需要 SSR)
   ssr: true,
 
-  // modules: ['@nuxtjs/seo'],
+  modules: ['@nuxtjs/seo','@nuxt/ui'],
 
   site: {
     url: 'https://dt68.co',
     name: 'DT68',
-    description: 'DT68 – Dt68.com – Đăng Ký Tài Khoản Tặng 68k',// 描述
+    description: 'DT68',// 描述
     defaultLocale: 'vi',
   },
 
@@ -26,7 +33,7 @@ export default defineNuxtConfig({
     // 仅在生产环境修改构建资源目录名称，开发环境使用默认 _nuxt 以避免路径冲突
     buildAssetsDir: process.env.NODE_ENV === 'production' ? 'assets' : '_nuxt',
     head: {
-       title: 'DT68',//默认备用标题
+       title: 'okx',//默认备用标题
       htmlAttrs: {
         lang: 'vi'
       },
@@ -34,7 +41,7 @@ export default defineNuxtConfig({
       link: [
         // 标准 favicon - 开发环境使用绝对路径，生产环境(generate)使用相对路径
         // { rel: 'icon', type: 'image/x-icon', href: process.env.NODE_ENV === 'production' ? 'favicon.ico' : 'favicon.ico' },
-         { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' },
+         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       ] // PNG 格式（推荐现代浏览器）
         // { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
         // // Apple Touch Icon（用于 iOS 主屏添加）
@@ -49,13 +56,23 @@ export default defineNuxtConfig({
     payloadExtraction: false
   },
 
+  hooks: {
+    'build:manifest': (manifest) => {
+      for (const key in manifest) {
+        manifest[key].prefetch = false
+        // 如果也想禁用 preload，可以取消下面这行的注释
+        // manifest[key].preload = false
+      }
+    }
+  },
+
   nitro: {
     preset: 'static'// 启用静态站点生成
   },
-
+  // modules: ['@nuxt/ui'],
   // 强制 Vite 使用相对路径，确保静态资源引用正确 (仅生产环境)
   vite: {
-    //  base: process.env.NODE_ENV === 'production' ? './' : '/'
+//  base: process.env.NODE_ENV === 'production' ? './' : '/'
     base: '/'
   }
 })

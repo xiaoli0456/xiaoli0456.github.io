@@ -1,25 +1,22 @@
-<template>
-  <div class="page-container">
-    <div class="container">
-      <h1>XỔ SỐ</h1>
-      <p>节点发送规划</p>
-      <p>Nội dung đang được cập nhật...</p>
-    </div>
-  </div>
-</template>
+<script setup>
+import { ref } from "vue";
+import banner5 from "../assets/images/banners/banner5.webp";
 
-<style scoped>
-.page-container {
-  padding: 40px 0;
-  min-height: 50vh;
-}
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-h1 {
-  color: #0ea5e9;
-  margin-bottom: 20px;
-}
-</style>
+const items = ref([
+  {
+    title: "Xổ Số Miền Bắc - Soi Cầu Lô Đề Chuẩn Xác",
+    image: banner5,
+    description: "Cập nhật kết quả Xổ Số Miền Bắc nhanh nhất. Chia sẻ kinh nghiệm soi cầu, dự đoán lô đề với tỷ lệ trúng cao từ các chuyên gia.",
+    link: "/post/xo-so-mien-bac"
+  }
+]);
+</script>
+
+<template>
+  <CategoryPageLayout
+    title="Xổ Số DT68 – Sảnh Chơi Lô Đề Linh Hoạt, Tiện Lợi Nhất"
+    breadcrumb-name="Xổ Số"
+    category-name="XỔ SỐ"
+    :items="items"
+  />
+</template>
